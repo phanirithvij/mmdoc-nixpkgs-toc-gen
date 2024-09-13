@@ -21,3 +21,10 @@ A nixpkgs-manual --no-out-link)/share/doc/nixpkgs/manual.html > /shed/Projects/n
 - lib functions .md.in chapter
     - maybe mmdoc needs to run inside the environment setup by `doc/doc-support/package.nix` as the final setup
 
+- See https://github.com/NixOS/nixpkgs/pull/108063
+    - Seems like mmdoc will not be official since python more approachable than C (agreed)
+    - Seems like toc.md is hardcoded so my time wasn't entirely wasted
+    - minidoc -> not the full docs
+    - multi-page docs are on the way from the [matrix discussion](https://github.com/NixOS/nixpkgs/pull/108063#issuecomment-2001602381)
+    - abandon effort for now?
+
