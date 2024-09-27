@@ -1,0 +1,23 @@
+{
+  "pins": {
+    "nix": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nixos",
+        "repo": "nix"
+      },
+      "branch": "master",
+      "revision": "08deebddf26be28e5367983fdece18c484bbe410",
+      "url": "https://github.com/nixos/nix/archive/08deebddf26be28e5367983fdece18c484bbe410.tar.gz",
+      "hash": "191ncq5vvqhlpsi8adxmsvfnr3n91pxii3i22zy6x6bgf1lwn89c"
+    },
+    "nixpkgs": {
+      "type": "Channel",
+      "name": "nixpkgs-unstable",
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-24.11pre685691.28b5b8af91ff/nixexprs.tar.xz",
+      "hash": "14ldh9js6l9nqch7j8z6nhyplxc5d9jw375pg8h4s24m7x37xnvy"
+    }
+  },
+  "version": 3
+}
