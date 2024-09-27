@@ -28,3 +28,8 @@ A nixpkgs-manual --no-out-link)/share/doc/nixpkgs/manual.html > /shed/Projects/n
     - multi-page docs are on the way from the [matrix discussion](https://github.com/NixOS/nixpkgs/pull/108063#issuecomment-2001602381)
     - abandon effort for now?
 
+- GetPsyched is working on multiple docs support (see https://github.com/GetPsyched/nixpkgs/commits/render-docs)
+
+- [ ] A nix script which builds all docs
+- [ ] A nix script which opens all docs in w3m tmuxp (something)
+- [ ] A nix script which opens all docs in qutebrowser (saw someone doing it in github issue or somewhere)
