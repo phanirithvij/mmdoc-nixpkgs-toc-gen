@@ -30,6 +30,26 @@ A nixpkgs-manual --no-out-link)/share/doc/nixpkgs/manual.html > /shed/Projects/n
 
 - GetPsyched is working on multiple docs support (see https://github.com/GetPsyched/nixpkgs/commits/render-docs)
 
-- [ ] A nix script which builds all docs
-- [ ] A nix script which opens all docs in w3m tmuxp (something)
-- [ ] A nix script which opens all docs in qutebrowser (saw someone doing it in github issue or somewhere)
+- [ ] navi cheat hook
+  - fails (used to work?)
+- [ ] navi cheats
+- [ ] menu | fzf, deadnix|statix etc via fzf
+  - see datastar?
+
+### Setup
+
+```$ as bash
+# direnv allow
+menu
+```
+
+```bash
+menu
+docs-build
+docs-browse-qute
+docs-browse-tmux
+noogle-build
+noogle-run
+upd
+fmt
+```

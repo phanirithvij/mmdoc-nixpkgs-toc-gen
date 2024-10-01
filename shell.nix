@@ -2,6 +2,7 @@ let
   sources = import ./npins;
   pkgs = import sources.nixpkgs { };
   inherit (pkgs) lib;
+  stripStorePrefix = import ./nix/lib/strip-store-prefix.nix lib;
   b' = lib.meta.getExe;
   noogle = {
     src = sources.noogle;
@@ -85,25 +86,50 @@ let
       dest = "${docs.nixos.out}/share/doc/nixos/index.html";
     };
   };
-  scripts = [
+  custom_scripts = [
     docs.build
     docs.browse.qute
     docs.browse.tmux
     noogle.build
     noogle.run
+    upd
+    fmt
   ];
+  script_names' = builtins.concatStringsSep " " (builtins.map stripStorePrefix custom_scripts);
+  menu = pkgs.writeScriptBin "menu" ''
+    echo menu
+    echo ${script_names'} | tr ' ' '\n'
+  '';
+  fmt = pkgs.writeScriptBin "fmt" ''
+    nixfmt **/*.nix
+    deadnix
+    statix check
+    mdsh
+  '';
+  upd = pkgs.writeScriptBin "upd" ''
+    npins update
+    rm -rf .direnv
+    echo run direnv allow
+  '';
 in
 pkgs.mkShellNoCC {
+  shellHook = ''
+    echo $ menu
+    ${b' menu}
+  '';
   packages =
     with pkgs;
     [
       black
       (python312.withPackages (pypkgs: with pypkgs; [ beautifulsoup4 ]))
-
-      npins
+    ]
+    ++ [
       nixfmt-rfc-style
       deadnix
       statix
+      npins
+      mdsh
     ]
-    ++ scripts;
+    ++ custom_scripts
+    ++ [ menu ];
 }
