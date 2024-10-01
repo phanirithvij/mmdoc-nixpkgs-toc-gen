@@ -1,22 +1,37 @@
 {
   "pins": {
     "nix": {
-      "type": "Git",
+      "type": "GitRelease",
       "repository": {
         "type": "GitHub",
         "owner": "nixos",
         "repo": "nix"
       },
-      "branch": "master",
-      "revision": "08deebddf26be28e5367983fdece18c484bbe410",
-      "url": "https://github.com/nixos/nix/archive/08deebddf26be28e5367983fdece18c484bbe410.tar.gz",
-      "hash": "191ncq5vvqhlpsi8adxmsvfnr3n91pxii3i22zy6x6bgf1lwn89c"
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "version": "2.24.9",
+      "revision": "04206730cbd978e199bb1a5055b74607f0387654",
+      "url": "https://api.github.com/repos/nixos/nix/tarball/2.24.9",
+      "hash": "1kzr6vgxmi51kza4a6089b7fq9zsr8lsn09bsxympks26z4l20iv"
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
       "url": "https://releases.nixos.org/nixpkgs/nixpkgs-24.11pre685691.28b5b8af91ff/nixexprs.tar.xz",
       "hash": "14ldh9js6l9nqch7j8z6nhyplxc5d9jw375pg8h4s24m7x37xnvy"
+    },
+    "noogle": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "noogle"
+      },
+      "branch": "main",
+      "revision": "5edb2114a0a7c328b417c95b459d3e3f920d3b22",
+      "url": "https://github.com/nix-community/noogle/archive/5edb2114a0a7c328b417c95b459d3e3f920d3b22.tar.gz",
+      "hash": "0rrcfpqqlbvqlgbcpyrsf0hdcr9xvybfkklmj5sb20xp1mps94d1"
     }
   },
   "version": 3
