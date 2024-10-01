@@ -27,7 +27,8 @@ let
   multipageofficial = { }; # https://github.com/NixOS/nixpkgs/compare/nixos-24.05...GetPsyched:nixpkgs:render-docs?w=1
   nixpkgs-tracker = { }; # nixpkgs tracker
   nixpkgs-pr-tracker = { }; # pr-tracker
-  fnix = ''${b' pkgs.nix} --extra-experimental-features "nix-command flakes"'';
+  #fnix = ''${b' pkgs.nix} --extra-experimental-features "nix-command flakes"'';
+  fnix = "${b' pkgs.nix-output-monitor}";
   docs = {
     tmuxp-workspace = pkgs.writeText "docs-tmuxp-w3m.yaml" ''
       session_name: 'nix-docs'
@@ -94,6 +95,7 @@ let
     noogle.run
     upd
     fmt
+    tmuxp'
   ];
   script_names' = builtins.concatStringsSep " " (builtins.map stripStorePrefix custom_scripts);
   menu = pkgs.writeScriptBin "menu" ''
@@ -111,6 +113,7 @@ let
     rm -rf .direnv
     echo run direnv allow
   '';
+  tmuxp' = pkgs.writeScriptBin "tmuxp-local" "${b' pkgs.tmuxp} load -y .";
 in
 pkgs.mkShellNoCC {
   shellHook = ''
@@ -129,6 +132,7 @@ pkgs.mkShellNoCC {
       statix
       npins
       mdsh
+      tmuxp
     ]
     ++ custom_scripts
     ++ [ menu ];

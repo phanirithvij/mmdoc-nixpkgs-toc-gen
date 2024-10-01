@@ -52,4 +52,5 @@ noogle-build
 noogle-run
 upd
 fmt
+docs-tmuxp
 ```

@@ -1,0 +1,14 @@
+session_name: 'nix-docs-main'
+windows:
+- layout: c3ac,137x34,0,0{68x34,0,0,3,68x34,69,0,2}
+  panes:
+  - nvim shell.nix; exec $SHELL
+  - noogle-run; exec $SHELL
+  window_name: noogle
+  suppress_history: false
+  window_shell: /bin/sh
+- panes:
+  - echo $ menu; exec $SHELL
+  window_name: manuals
+  suppress_history: false
+  window_shell: /bin/sh
