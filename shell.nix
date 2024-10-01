@@ -59,7 +59,8 @@ let
         ${b' qutebrowser.pkg} --config-py "$configfile" \
           ${docs.nix.dest} \
           ${docs.nixpkgs.dest} \
-          ${docs.nixos.dest}
+          ${docs.nixos.dest} \
+          http://localhost:8001
       '';
       tmux = pkgs.writeShellScriptBin "docs-browse-tmux" ''
         ${b' docs.build}
