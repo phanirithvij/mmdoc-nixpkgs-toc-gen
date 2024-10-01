@@ -2,43 +2,95 @@ let
   sources = import ./npins;
   pkgs = import sources.nixpkgs { };
   inherit (pkgs) lib;
-b' = lib.meta.getExe;
-  noogle = rec {
+  b' = lib.meta.getExe;
+  noogle = {
     src = sources.noogle;
     # offline instance of migrate-doc-comments ?? am I crazy?
     # https://github.com/hsjobeki/nixpkgs/blob/master/.github/workflows/update-comments.yml
-    build-script = pkgs.writeShellScriptBin "noogle-build" ''
-      ${nix} build ${sources.noogle}#ui -o result/noogle
+    build = pkgs.writeShellScriptBin "noogle-build" ''
+      ${fnix} build ${sources.noogle}#ui -o result/noogle
     '';
-    run-script = pkgs.writeShellScriptBin "noogle-run" ''
-      ${b' build-script}
+    run = pkgs.writeShellScriptBin "noogle-run" ''
+      ${b' noogle.build}
       ${b' pkgs.httplz} -q -x ./result/noogle/lib/node_modules/noogle/out
+    '';
+  };
+  qutebrowser = {
+    pkg = pkgs.qutebrowser;
+    config = pkgs.writeText "docs-qute-conf.py" ''
+      config.load_autoconfig()
+      config.set("colors.webpage.darkmode.enabled", True)
     '';
   };
   mmdocs = { }; # todo get that github pr?
   multipageofficial = { }; # https://github.com/NixOS/nixpkgs/compare/nixos-24.05...GetPsyched:nixpkgs:render-docs?w=1
   nixpkgs-tracker = { }; # nixpkgs tracker
   nixpkgs-pr-tracker = { }; # pr-tracker
-  nix = ''${b' pkgs.nix} --extra-experimental-features "nix-command flakes"'';
-  # TODO tmuxp for w3m
-  docs-browse =
-    browser:
-    pkgs.writeShellScriptBin "docs-browse" ''
-      ${b' docs-build}
-      ${browser} ./result/nix-latest-doc/share/doc/nix/manual/index.html
-      ${browser} ./result/nixpkgs-git-manual/share/doc/nixpkgs/manual.html
-      ${browser} ./result/nixos-git-manual/share/doc/nixos/index.html
+  fnix = ''${b' pkgs.nix} --extra-experimental-features "nix-command flakes"'';
+  docs = {
+    tmuxp-workspace = pkgs.writeText "docs-tmuxp-w3m.yaml" ''
+      session_name: 'nix-docs'
+      windows:
+      - panes:
+        - ${b' pkgs.w3m} ${docs.nix.dest}; exec $SHELL
+        window_name: nix-latest-doc
+        suppress_history: false
+        window_shell: /bin/sh
+      - panes:
+        - ${b' pkgs.w3m} ${docs.nixpkgs.dest}; exec $SHELL
+        window_name: nixpkgs-unstable-manual
+        suppress_history: false
+        window_shell: /bin/sh
+      - panes:
+        - ${b' pkgs.w3m} ${docs.nixos.dest}; exec $SHELL
+        window_name: nixos-unstable-manual
+        suppress_history: false
+        window_shell: /bin/sh
     '';
-  docs-build = pkgs.writeShellScriptBin "docs-build" ''
-    ${nix} build ${sources.nix}#nix^doc --print-out-paths -o result/nix-latest-doc
-    ${nix} build ${sources.nixpkgs}#nixpkgs-manual --print-out-paths -o result/nixpkgs-git-manual
-    ${pkgs.nix}/bin/nix-build ${sources.nixpkgs}/nixos/release.nix -A manualHTML.x86_64-linux -o result/nixos-git-manual
-  '';
+    browse = {
+      qute = pkgs.writeShellScriptBin "docs-browse-qute" ''
+        ${b' docs.build}
+        configfile=~/.config/qutebrowser/config.py
+        if [ ! -f "$configfile" ]; then
+          configfile=${qutebrowser.config}
+        fi
+        ${b' qutebrowser.pkg} --config-py "$configfile" \
+          ${docs.nix.dest} \
+          ${docs.nixpkgs.dest} \
+          ${docs.nixos.dest}
+      '';
+      tmux = pkgs.writeShellScriptBin "docs-browse-tmux" ''
+        ${b' docs.build}
+        ${b' pkgs.tmuxp} load -y ${docs.tmuxp-workspace}
+      '';
+    };
+    build = pkgs.writeShellScriptBin "docs-build" ''
+      ${docs.nix.cmd}
+      ${docs.nixpkgs.cmd}
+      ${docs.nixos.cmd}
+    '';
+    nix = {
+      cmd = "${fnix} build ${sources.nix}#nix^doc --print-out-paths -o result/nix-latest";
+      out = "./result/nix-latest";
+      dest = "${docs.nix.out}-doc/share/doc/nix/manual/index.html";
+    };
+    nixpkgs = {
+      cmd = "${fnix} build ${sources.nixpkgs}#nixpkgs-manual --print-out-paths -o result/nixpkgs-git-manual";
+      out = "./result/nixpkgs-git-manual";
+      dest = "${docs.nixpkgs.out}/share/doc/nixpkgs/manual.html";
+    };
+    nixos = {
+      cmd = "${pkgs.nix}/bin/nix-build ${sources.nixpkgs}/nixos/release.nix -A manualHTML.x86_64-linux -o result/nixos-git-manual";
+      out = "./result/nixos-git-manual";
+      dest = "${docs.nixos.out}/share/doc/nixos/index.html";
+    };
+  };
   scripts = [
-    docs-build
-    (docs-browse (b' pkgs.w3m)) # pkgs.qutebrowser
-    noogle.build-script
-    noogle.run-script
+    docs.build
+    docs.browse.qute
+    docs.browse.tmux
+    noogle.build
+    noogle.run
   ];
 in
 pkgs.mkShellNoCC {
