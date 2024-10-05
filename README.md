@@ -1,12 +1,16 @@
-## What
+### What
 
-A script to generate multi-page nixpkgs manual using ryanm's [mmdoc](https://github.com/ryantm/mmdoc)
-
-## Why
-
-https://ryantm.github.io/nixpkgs looks good and multi page manual is great
-But I can't find the repo to generate the table of contents (toc.md)
-So trying to recreate it as much as possible.
+- mmdoc (written in c, hmm)
+- all manuals build steps (doc urls, s.o post)
+  - a wiki article
+- nixpkgs/nixos manuals multi-paged (find the discussion, TODO, see https://github.com/NixOS/nixpkgs/pull/108063)
+- w3m/qutebrowser scripts like nixos-help (make it easier)
+  - for nixpkgs, nixos, nix, hm manuals
+- nixos-search, nixos-hm-search, noogle, all self-hosted (guide in wiki and/or provide a flake)
+  - add reasoning, incase your offline, local nixpkgs checkout reused
+  - nixpkgs-tracker, pr-tracker (possible w/ no gh requests? i.e. offline?)
+    - that tampermonkey script which adds it to the pr itself
+    - add all of this in a wiki article with proper references to discourse/reddit/blog sources
 
 ## Setup
 
@@ -18,15 +22,14 @@ A nixpkgs-manual --no-out-link)/share/doc/nixpkgs/manual.html > /shed/Projects/n
 
 ## TODO
 
-- lib functions .md.in chapter
+- mmdoc (see the mmdoc pr nixpkgs#108063)
+  - lib functions .md.in chapter
     - maybe mmdoc needs to run inside the environment setup by `doc/doc-support/package.nix` as the final setup
-
-- See https://github.com/NixOS/nixpkgs/pull/108063
+  - See https://github.com/NixOS/nixpkgs/pull/108063
     - Seems like mmdoc will not be official since python more approachable than C (agreed)
     - Seems like toc.md is hardcoded so my time wasn't entirely wasted
     - minidoc -> not the full docs
     - multi-page docs are on the way from the [matrix discussion](https://github.com/NixOS/nixpkgs/pull/108063#issuecomment-2001602381)
-    - abandon effort for now?
 
 - GetPsyched is working on multiple docs support (see https://github.com/GetPsyched/nixpkgs/commits/render-docs)
 
