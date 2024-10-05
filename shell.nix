@@ -139,7 +139,7 @@ let
     rm -rf .direnv
     echo run direnv allow
   '';
-  tmuxp' = pkgs.writeScriptBin "tmuxp-local" "${b' pkgs.tmuxp} load -y .";
+  tmuxp' = pkgs.writeScriptBin "dev" "${b' pkgs.tmuxp} load -y .";
 
 in
 pkgs.mkShellNoCC {
