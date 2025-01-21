@@ -40,7 +40,7 @@ let
     # TODO stable and unstable manuals
     # TODO use these instead of build commands etc.
     hm-docs = (import sources.home-manager { inherit pkgs; }).docs.html;
-    nix-docs = (import sources.nix).packages.${system}.nix.doc;
+    nix-docs = (import sources.nix).packages.${system}.nix-manual;
     nixpkgs-docs = pkgs.nixpkgs-manual;
     nixos-docs = ((import "${sources.nixpkgs}/nixos/release.nix") { }).manualHTML.${system};
     tmuxp-workspace = pkgs.writeText "docs-tmuxp-w3m.yaml" ''
@@ -93,7 +93,7 @@ let
       ${docs.hm.cmd}
     '';
     nix = rec {
-      cmd = "${fnix} build ${sources.nix}#nix^doc --print-out-paths -o ${out}";
+      cmd = "${fnix} build ${sources.nix}#packages.${system}.nix-manual --print-out-paths -o ${out}";
       out = "./result/nix-latest";
       dest = "${out}-doc/share/doc/nix/manual/index.html";
     };
@@ -103,7 +103,7 @@ let
       dest = "${out}/share/doc/nixpkgs/manual.html";
     };
     nixos = rec {
-      cmd = "${pkgs.nix}/bin/nix-build ${sources.nixpkgs}/nixos/release.nix -A manualHTML.x86_64-linux -o ${out}";
+      cmd = "${pkgs.nix}/bin/nix-build ${sources.nixpkgs}/nixos/release.nix -A manualHTML.${system} -o ${out}";
       out = "./result/nixos-git-manual";
       dest = "${out}/share/doc/nixos/index.html";
     };
