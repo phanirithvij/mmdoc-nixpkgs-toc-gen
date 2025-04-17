@@ -151,7 +151,7 @@ pkgs.mkShellNoCC {
     with pkgs;
     [
       black
-      (python312.withPackages (pypkgs: with pypkgs; [ beautifulsoup4 ]))
+      (python3.withPackages (pp: with pp; [ beautifulsoup4 ]))
     ]
     ++ [
       nixfmt-rfc-style
