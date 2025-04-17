@@ -18,7 +18,7 @@ let
     '';
     run = pkgs.writeShellScriptBin "noogle-run" ''
       ${b' noogle.build}
-      ${b' pkgs.httplz} -q -x ./result/noogle/lib/node_modules/noogle/out
+      ${b' pkgs.httplz} -q -x ./result/noogle
     '';
   };
   nixos-search = { }; # does it work without elasticsearch?
