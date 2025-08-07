@@ -8,9 +8,10 @@
         "repo": "home-manager"
       },
       "branch": "master",
-      "revision": "e72178b84e440703e17ff5d393ba060784bed099",
-      "url": "https://github.com/nix-community/home-manager/archive/e72178b84e440703e17ff5d393ba060784bed099.tar.gz",
-      "hash": "1vgc2db9q981sgqfkpfrrz0cb5p5mz62np1m5vl3bdgllgnhhjgd"
+      "submodules": false,
+      "revision": "d8a475e179888553b6863204a93295da6ee13eb4",
+      "url": "https://github.com/nix-community/home-manager/archive/d8a475e179888553b6863204a93295da6ee13eb4.tar.gz",
+      "hash": "13crd544fmxz8dmgn83q3ab5zknr64ikfc0qgcky63gsrr67rsyj"
     },
     "nix": {
       "type": "GitRelease",
@@ -22,16 +23,17 @@
       "pre_releases": false,
       "version_upper_bound": null,
       "release_prefix": null,
-      "version": "2.28.2",
-      "revision": "4e35b66bdbc129cc5a7d4e264686f8fdfbe7b255",
-      "url": "https://api.github.com/repos/nixos/nix/tarball/2.28.2",
-      "hash": "020bgg0lkbrcgn8l6m5qnnk21rmh6b7140zjq0cp456mkyas2pya"
+      "submodules": false,
+      "version": "2.30.2",
+      "revision": "5fbf9202486969d5dc454a8c0c659b6b3c53f84a",
+      "url": "https://api.github.com/repos/nixos/nix/tarball/2.30.2",
+      "hash": "1r6ll53g00l18qs29l9pimbngn51npccrxd3bbbggn53rw19z3jk"
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.05pre782598.18dd725c2960/nixexprs.tar.xz",
-      "hash": "1p7kgyph7xkj57p19nbxpycmbchc6d9gwdznsmxhymrzyzi3if21"
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre840248.a683adc19ff5/nixexprs.tar.xz",
+      "hash": "1f6k2wkx4hl1shbn46kb9gbc08xw2xh48777c6dwnwf6gnyiwmp5"
     },
     "noogle": {
       "type": "Git",
@@ -41,10 +43,11 @@
         "repo": "noogle"
       },
       "branch": "main",
-      "revision": "1e96e2b02d232326f44f174e8dfae80fb1109a3b",
-      "url": "https://github.com/nix-community/noogle/archive/1e96e2b02d232326f44f174e8dfae80fb1109a3b.tar.gz",
-      "hash": "0hqg0512dncz5l9kc70kn4cw5v7l409z5jn9395dwix3jnz5c5dw"
+      "submodules": false,
+      "revision": "32f1b497875ef4d4b371185d11adbc64ade2d8c8",
+      "url": "https://github.com/nix-community/noogle/archive/32f1b497875ef4d4b371185d11adbc64ade2d8c8.tar.gz",
+      "hash": "1abkarw534kbkyckf8mdb9mdk1fwcdqj182gk8zjnszljcpx3fr6"
     }
   },
-  "version": 3
+  "version": 5
 }
