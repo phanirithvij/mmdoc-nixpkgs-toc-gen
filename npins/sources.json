@@ -9,9 +9,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "d8a475e179888553b6863204a93295da6ee13eb4",
-      "url": "https://github.com/nix-community/home-manager/archive/d8a475e179888553b6863204a93295da6ee13eb4.tar.gz",
-      "hash": "13crd544fmxz8dmgn83q3ab5zknr64ikfc0qgcky63gsrr67rsyj"
+      "revision": "55b1f5b7b191572257545413b98e37abab2fdb00",
+      "url": "https://github.com/nix-community/home-manager/archive/55b1f5b7b191572257545413b98e37abab2fdb00.tar.gz",
+      "hash": "0i6jma7k3m4v5bg9d8gzrdywrqyi1yy2yp9gkfg2ls8s5pb07bcp"
     },
     "nix": {
       "type": "GitRelease",
@@ -24,16 +24,16 @@
       "version_upper_bound": null,
       "release_prefix": null,
       "submodules": false,
-      "version": "2.30.2",
-      "revision": "5fbf9202486969d5dc454a8c0c659b6b3c53f84a",
-      "url": "https://api.github.com/repos/nixos/nix/tarball/2.30.2",
-      "hash": "1r6ll53g00l18qs29l9pimbngn51npccrxd3bbbggn53rw19z3jk"
+      "version": "2.31.2",
+      "revision": "a9400f5a8b2213aea7956a1b810e8d438f1e45ef",
+      "url": "https://api.github.com/repos/nixos/nix/tarball/2.31.2",
+      "hash": "0cmcq8bagz3i2jysl80gmg3vb7sx0yc3jdz8aj5bfd64p0y9gc9l"
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre840248.a683adc19ff5/nixexprs.tar.xz",
-      "hash": "1f6k2wkx4hl1shbn46kb9gbc08xw2xh48777c6dwnwf6gnyiwmp5"
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre863969.12bd230118a1/nixexprs.tar.xz",
+      "hash": "1fiw9y33vkawgv0rjp4v75l0sc5wdxrqxb7ya2aqf6jk84agigzj"
     },
     "noogle": {
       "type": "Git",
@@ -44,9 +44,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "32f1b497875ef4d4b371185d11adbc64ade2d8c8",
-      "url": "https://github.com/nix-community/noogle/archive/32f1b497875ef4d4b371185d11adbc64ade2d8c8.tar.gz",
-      "hash": "1abkarw534kbkyckf8mdb9mdk1fwcdqj182gk8zjnszljcpx3fr6"
+      "revision": "2f1318c49e8ebc55b514f77f10a1b271419f7f2e",
+      "url": "https://github.com/nix-community/noogle/archive/2f1318c49e8ebc55b514f77f10a1b271419f7f2e.tar.gz",
+      "hash": "02g5drwwm9j8fsiyj19ydi927h2gjgrvp82j8bwrlrvawqfwph27"
     }
   },
   "version": 5
