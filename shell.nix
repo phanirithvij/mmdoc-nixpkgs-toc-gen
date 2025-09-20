@@ -97,7 +97,7 @@ let
     nix = rec {
       cmd = "${fnix} build ${sources.nix}#packages.${system}.nix-manual --print-out-paths -o ${out}";
       out = "./result/nix-latest";
-      dest = "${out}-doc/share/doc/nix/manual/index.html";
+      dest = "${out}/share/doc/nix/manual/index.html";
     };
     nixpkgs = rec {
       cmd = "${fnix} build ${sources.nixpkgs}#nixpkgs-manual --print-out-paths -o ${out}";
