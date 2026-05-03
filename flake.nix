@@ -13,7 +13,6 @@
     noogle.inputs.nix-master.follows = "nix";
     noogle.inputs.nixpkgs-master.follows = "nixpkgs";
     noogle.inputs.nixpkgs.follows = "nixpkgs";
-    noogle.inputs.pre-commit-hooks.follows = "";
   };
 
   outputs =
